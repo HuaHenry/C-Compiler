@@ -15,6 +15,7 @@ std::vector<productItem>productionItems;              // 3、产生式
 SemanticAnalysis semantic;							  // 4、语义分析
 string START_SIGN = "Program";// 原文法的起始符
 
+
 // 打印系统头部信息
 void printInfo_start() {
 	system("cls");
@@ -25,7 +26,7 @@ void printInfo_start() {
 	cout << " ██║         ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║██║     ██╔══╝  ██╔══██╗" << endl;
 	cout << " ╚██████╗    ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ██║███████╗███████╗██║  ██║" << endl;
 	cout << "  ╚═════╝     ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝" << endl;
-
+	
 	cout << endl << "                      类C语言编译器 -- 2151127 华洲琦                      " << endl << endl;
 	cout << "------------------------------- 输 入 文 件 -------------------------------" << endl;
 	cout << "                                                               " << endl;

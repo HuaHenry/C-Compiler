@@ -236,6 +236,7 @@ void SemanticAnalysis::Semantic_Analysis_FunDec(const string production_left, co
 		symbolList.pop_back();
 	symbolList.push_back({ production_left,specifier.value,specifier.row,specifier.col,specifier.tableIdx,specifier.idx });
 }
+
 // CreateFunTable_m : @
 void SemanticAnalysis::Semantic_Analysis_CreateFunTable_m(const string production_left, const vector<string> production_right)
 {
@@ -273,6 +274,8 @@ void SemanticAnalysis::Semantic_Analysis_CreateFunTable_m(const string productio
 	// ½øÐÐpushback
 	symbolList.push_back({ production_left,identifier.value,identifier.row,identifier.col,0,int(tables[0].table.size() - 1) });
 }
+
+
 // ParamDec : VarSpecifier identifier
 void SemanticAnalysis::Semantic_Analysis_ParamDec(const string production_left, const vector<string> production_right)
 {

@@ -52,6 +52,8 @@ Assembly_Generator::Assembly_Generator(string out_path, const vector<Quatenary> 
 	}
 }
 
+// 汇编代码生成核心模块
+// 根据四元式的类型执行不同的生成函数调用
 void Assembly_Generator::generate()
 {
 	// 程序开始前，需要将main函数相关指针赋值，堆栈指针$sp赋栈顶esp，帧指针$fp赋返回地址ebp
@@ -112,6 +114,7 @@ void Assembly_Generator::generate()
 	}
 }
 
+// 处理函数调用的汇编代码生成
 void Assembly_Generator::callTypeHandler(Quatenary quat) 		// 函数调用
 {
 	// 1. 调用时更新栈帧 2. 返回后撤销剩余的栈帧（一部分在return处被撤销）
@@ -267,7 +270,8 @@ void Assembly_Generator::jTypeHandler(Quatenary quat) 		// 跳转（包括j j< j> j= 
 	}
 }
 
-void Assembly_Generator::computeTypeHandler(Quatenary quat) 	// 计算（包括+ - * /）
+// 计算（包括+ - * /）的汇编代码生成
+void Assembly_Generator::computeTypeHandler(Quatenary quat) 	
 {
 	// 1. 分配寄存器，将B和C从内存换入
 	
