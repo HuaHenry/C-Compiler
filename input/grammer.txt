@@ -1,0 +1,47 @@
+$ 产生式格式为 A : a B \ C d ，各个符号之间用空格分开，产生式右边用 \ 分割
+$ $为注释行
+$ @为空串，identifier为标识符，number为整数
+$ 拓展文法的起始符号为S，文法的起始符号为Program
+$ 使用%token : xx \ xx \ xx列出所有的终结符
+
+%VT : return \ if \ else \ while \ void \ int \ float \ double \ identifier \ number \ ; \ , \ ( \ ) \ { \ } \ + \ - \ * \ / \ = \ > \ < \ >= \ <= \ != \ == \ # \ @
+
+$ 扩展文法产生式
+S : Program
+
+$ 整个程序为多个声明串的组合
+Program : ExtDefList 
+
+$ 声明串
+ExtDefList : ExtDef ExtDefList \ @
+ExtDef : VarSpecifier identifier ; \ VarSpecifier FunDec Block
+VarSpecifier : int \ void \ float \ double
+$ VarSpecifier : void \ int 
+FunDec : identifier CreateFunTable_m ( VarList )
+CreateFunTable_m : @
+VarList : ParamDec , VarList \ ParamDec \ @ \ void
+ParamDec : VarSpecifier identifier
+Block : { DefList StmtList }
+DefList : Def DefList \ @
+Def : VarSpecifier identifier ;
+StmtList : Stmt StmtList \ @
+Stmt : AssignStmt ; \ ReturnStmt ; \ IfStmt \ WhileStmt \ CallStmt ;
+AssignStmt : identifier = Exp
+Exp : AddSubExp \ Exp Relop AddSubExp
+AddSubExp : Item \ Item + Item \ Item - Item
+Item : Factor \ Factor * Factor \ Factor / Factor
+Factor : number \ ( Exp ) \ identifier \ CallStmt
+CallStmt : identifier ( CallFunCheck Args )
+CallFunCheck : @
+Args : Exp , Args \ Exp \ @
+ReturnStmt : return Exp \ return
+Relop : > \ < \ >= \ <= \ == \ !=
+IfStmt : if IfStmt_m1 ( Exp ) IfStmt_m2 Block IfNext
+IfStmt_m1 : @
+IfStmt_m2 : @
+IfNext : @ \ IfStmt_next else Block
+IfStmt_next : @
+WhileStmt : while WhileStmt_m1 ( Exp ) WhileStmt_m2 Block
+WhileStmt_m1 : @
+WhileStmt_m2 : @
+
