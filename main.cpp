@@ -30,7 +30,7 @@ void printInfo_start() {
 	cout << endl << "                      类C语言编译器 -- 2151127 华洲琦                      " << endl << endl;
 	cout << "------------------------------- 输 入 文 件 -------------------------------" << endl;
 	cout << "                                                               " << endl;
-	cout << "高级语言程序：sourceProgram.c                       " << endl;
+	cout << "高级语言程序：sourceProgram_error.c                       " << endl;
 	cout << "语法文件：    grammer.txt                           " << endl;
 	cout << "                                                               " << endl;
 	cout << "------------------------------- 输 出 文 件 -------------------------------" << endl;
